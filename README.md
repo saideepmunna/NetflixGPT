@@ -1,5 +1,10 @@
 -Created project using npx create-react-app
 -Installed TailwindCSS
+- Created Header, Login, Body Components
+- Installed and Imported react-router-dom
+- Cleaned all the code in App.js and added only <Body/> component
+- Applied routing in Body component 
+- Developed Login page with toggleSignIn/SignUp forms and Header page
 
 
 

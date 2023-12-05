@@ -1,11 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import Body from "./components/Body";
 
 function App() {
   return (
-    <div className="text-xl font-bold text-blue-600 p-3 shadow-md border border-solid border-black" >
-      Hello World
-    </div>
+    <Body/>
   );
 }
 
