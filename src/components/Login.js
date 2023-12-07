@@ -1,11 +1,75 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Header from "./Header";
+import { validateData } from "../utils/validatedata";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+
 
 const Login = () => {
-    const [isSignInForm, setIsSignInForm] = useState(true)
-    const toggleSignin = ()=>{
-          setIsSignInForm(!isSignInForm);
+  const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const email = useRef(null);
+  const password = useRef(null);
+
+  
+
+  const handleSubmitBtn = () => {
+    const message = validateData(email.current.value, password.current.value);
+    // console.log(message);
+    setErrorMessage(message);
+
+    //if message returned is not null and email/password doesn't meet criteria
+    if (message !== null) return;
+
+    //Sign In form (registering a user)
+    if (!isSignInForm) {
+      // const auth = getAuth(); This line of code has to be used in every authentication method hence declare in firebase.js
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          // ...
+          // console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+
+          setErrorMessage(errorCode + " " + errorMessage);
+        });
+    } else {
+      //Authenticate the existing user in sign In page
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user); 
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorMessage);
+        });
+        
     }
+  };
+
+  const toggleSignin = () => {
+    setIsSignInForm(!isSignInForm);
+  };
   return (
     <div>
       <Header />
@@ -15,33 +79,56 @@ const Login = () => {
         alt="bg-img"
       />
       <div className="flex justify-center">
-        <form className="absolute z-20 mt-24 ">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+          className="absolute z-20 mt-24 text-white"
+        >
           <div className="flex flex-col bg-black px-[68px] pt-[60px] pb-[40px] rounded-md bg-opacity-[0.85]">
-            <p className="text-white font-semibold text-3xl mb-4">{isSignInForm? "Sign In" : "Sign Up"}</p>
-            {!isSignInForm && (<input
-              type="text"
-              placeholder="Name"
-              className="p-3 w-72 mb-6 bg-gray-700 rounded-md"
-            />)}
-            {!isSignInForm && (<input
-              type="text"
-              placeholder="Phone Number"
-              className="p-3 w-72 mb-6 bg-gray-700 rounded-md"
-            />)}
+            <p className="text-white font-semibold text-3xl mb-6">
+              {isSignInForm ? "Sign In" : "Sign Up"}
+            </p>
+            {!isSignInForm && (
+              <input
+                type="text"
+                placeholder="Name"
+                className="p-3 w-[296px] mb-6 bg-gray-700 rounded-md"
+              />
+            )}
+            {!isSignInForm && (
+              <input
+                type="text"
+                placeholder="Phone Number"
+                className="p-3 w-72 mb-6 bg-gray-700 rounded-md"
+              />
+            )}
             <input
-              type="email"
+              ref={email}
               placeholder="Email or phone number"
               className="p-3 w-72 mb-6 bg-gray-700 rounded-md"
             />
             <input
+              ref={password}
               type="password"
               placeholder="Password"
-              className="p-3 mb-11 bg-gray-700 rounded-md"
+              className="p-3 mb-3 bg-gray-700 rounded-md"
             />
-            <button className="p-3 mb-4 text-white font-bold bg-red-600 rounded-md">
-            {isSignInForm? "Sign In" : "Sign Up"}
+            <p className="mb-10 text-orange-500">{errorMessage}</p>
+            <button
+              className="p-3 mb-4 text-white font-bold bg-red-600 rounded-md"
+              onClick={handleSubmitBtn}
+            >
+              {isSignInForm ? "Sign In" : "Sign Up"}
             </button>
-            <p className="text-white text-sm cursor-pointer hover:underline mb-20" onClick={toggleSignin}>{isSignInForm? "New to Netflix? Sign up now":"Already a user? Sign In"}</p>
+            <p
+              className="text-white text-sm cursor-pointer hover:underline mb-20"
+              onClick={toggleSignin}
+            >
+              {isSignInForm
+                ? "New to Netflix? Sign up now"
+                : "Already a user? Sign In"}
+            </p>
           </div>
         </form>
       </div>
