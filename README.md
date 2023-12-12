@@ -14,9 +14,14 @@
 - Setup Redux Store with userSlice
 - Implemented Signout
 - Used updateProfile firebase API
-- Updated out name on browse using selector
-
-
+- Updated name on browse using selector
+- BUG FIX - Now we can't route directly from browse page to login page and vice verca
+- Bug fixed through onAuthStateChanged which resricts the routes by navigating only on auth state changes.
+- Unsubscribed the onAuthStateChanged callback in useEffect when component unmounts
+- Replaced the strings in app with constant values so that it will be easy to update when a photo url updates.
+- fetched the movie list using TMDB API and giving access token in options
+- Created a movies Slice and dispatched an action of movies list to the slice.
+- Created a custom hook for Fetching data and dispatching task in the Browse component.
 
 FEATURES
 

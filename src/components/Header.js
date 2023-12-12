@@ -4,6 +4,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeuser } from "../utils/userSlice";
+import { LOGO, PROFILE_IMG } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
@@ -33,6 +34,8 @@ const Header = () => {
         navigate("/")
       }
     });
+    //Unsubscribing the listener when components unmounts
+    return ()=> unSubscribe();
   }, []);
 
   return (
@@ -41,7 +44,7 @@ const Header = () => {
         <div>
           <img
             className="absolute w-52 ml-4  z-30"
-            src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+            src= {LOGO}
             alt="netflix-logo"
           />
         </div>
@@ -51,7 +54,7 @@ const Header = () => {
           <div className="flex items-center">
             <img
               className="w-32"
-              src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+              src= {LOGO}
               alt="netflix-logo"
             />
             <div className="flex text-white text-sm list-none py-3 ml-4">
@@ -67,7 +70,7 @@ const Header = () => {
             <div className="mr-2">
               <img
                 className="rounded-md"
-                src="https://occ-0-5230-2186.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
+                src= {PROFILE_IMG}
                 alt="user icon"
               />
             </div>
