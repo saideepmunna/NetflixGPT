@@ -1,21 +1,24 @@
 import { useRef, useState } from "react";
-import Header from "./Header";
 import { validateData } from "../utils/validatedata";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import Header from "./Header";
 
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const dispatch = useDispatch();
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-
-  
 
   const handleSubmitBtn = () => {
     const message = validateData(email.current.value, password.current.value);
@@ -37,14 +40,30 @@ const Login = () => {
           // Signed up
           const user = userCredential.user;
           // ...
-          // console.log(user);
+          
+          updateProfile(user, {
+            displayName: name.current.value,
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName })
+              );
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              setErrorMessage(error);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           // ..
 
-          setErrorMessage(errorCode + " " + errorMessage);
+          setErrorMessage(errorMessage);
         });
     } else {
       //Authenticate the existing user in sign In page
@@ -56,14 +75,13 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user); 
+          
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorMessage);
         });
-        
     }
   };
 
@@ -91,21 +109,23 @@ const Login = () => {
             </p>
             {!isSignInForm && (
               <input
+                ref={name}
                 type="text"
                 placeholder="Name"
                 className="p-3 w-[296px] mb-6 bg-gray-700 rounded-md"
               />
             )}
-            {!isSignInForm && (
+            {/* {!isSignInForm && (
               <input
+                ref={phone}
                 type="text"
                 placeholder="Phone Number"
                 className="p-3 w-72 mb-6 bg-gray-700 rounded-md"
               />
-            )}
+            )} */}
             <input
               ref={email}
-              placeholder="Email or phone number"
+              placeholder="Email"
               className="p-3 w-72 mb-6 bg-gray-700 rounded-md"
             />
             <input
@@ -118,6 +138,12 @@ const Login = () => {
             <button
               className="p-3 mb-4 text-white font-bold bg-red-600 rounded-md"
               onClick={handleSubmitBtn}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  // Call the onClick handler function when Enter key is pressed
+                  handleSubmitBtn();
+                }
+              }}
             >
               {isSignInForm ? "Sign In" : "Sign Up"}
             </button>

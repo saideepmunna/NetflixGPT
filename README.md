@@ -11,7 +11,10 @@
 - Deploying our app to production
 - Create user account through signup form
 - Implemented authentication using firebase APIs
-- Setup Redux Store with userSLice
+- Setup Redux Store with userSlice
+- Implemented Signout
+- Used updateProfile firebase API
+- Updated out name on browse using selector
 
 
 
