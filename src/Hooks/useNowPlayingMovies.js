@@ -4,6 +4,7 @@ import { addNowPlayingMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 
 
+
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
     const getMovieList = async () => {
@@ -12,6 +13,7 @@ const useNowPlayingMovies = () => {
         MOVIE_FETCH_OPTIONS
       );
       const json = await data.json();
+     
       console.log(json.results); // API Data is fetched twice because of <App/> is wrapped by <React.Strictmode/> in index.js. React does tocompare both for data inconsistency.
       // It happens only in development environment and not in production. Strictmode can bee removed if you wanna log only once.
       dispatch(addNowPlayingMovies(json.results));

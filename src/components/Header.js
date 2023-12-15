@@ -50,7 +50,7 @@ const Header = () => {
         </div>
       )}
       {user && (
-        <div className=" px-10 py-[7px] bg-gradient-to-b from-black w-screen flex justify-between">
+        <div className=" px-10 py-[7px] bg-gradient-to-b from-black w-screen flex justify-between absolute">
           <div className="flex items-center">
             <img
               className="w-32"
