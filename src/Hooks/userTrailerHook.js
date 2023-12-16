@@ -22,7 +22,7 @@ const useTrailerHook = (movieId)=>{
     const trailer =  filteredTrailer.length ? filteredTrailer[0] : json.results[0];
     dispatch(addTrailerVideo(trailer));
     // return trailer;
-    console.log(trailer)
+    // console.log(trailer)
     // setTrailerId(trailer.key) 
     // one method of passing trailer.key into jsx by useState
     // But its better to use redux store to dispatch an action and get the data from the store and use in JSX.

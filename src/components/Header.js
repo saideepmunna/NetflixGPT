@@ -2,12 +2,13 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { addUser, removeuser } from "../utils/userSlice";
 import { LOGO, PROFILE_IMG } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [pageScrolled, setpageScrolled] = useState(false)
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const handlerSignOut = () => {
@@ -19,6 +20,21 @@ const Header = () => {
         // An error happened.
       });
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setpageScrolled(true);
+      } else {
+        setpageScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,9 +53,10 @@ const Header = () => {
     //Unsubscribing the listener when components unmounts
     return ()=> unSubscribe();
   }, []);
+ 
 
   return (
-    <div>
+    <div >
       {!user && (
         <div>
           <img
@@ -50,7 +67,7 @@ const Header = () => {
         </div>
       )}
       {user && (
-        <div className=" px-10 py-[7px] bg-gradient-to-b from-black w-screen flex justify-between absolute">
+        <div className={pageScrolled? "px-10 py-[7px] bg-black w-full flex justify-between fixed z-40":"px-10 py-[7px] bg-gradient-to-b from-black w-full flex justify-between fixed z-40"}>
           <div className="flex items-center">
             <img
               className="w-32"

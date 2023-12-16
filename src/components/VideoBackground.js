@@ -6,20 +6,15 @@ const VideoBackground = ({ movieId }) => {
   const movieTrailer = useSelector((store) => store.movies?.trailerVideo);
 
   return (
-    <div>
-      <div></div>;
+    <div className="overflow-hidden">
       <iframe
-        width="560"
-        height="315"
-        src={
-          "https://www.youtube.com/embed/" +
-          movieTrailer?.key +
-          "?si=nQNeTHiZC_WjBhKe&amp;controls=0&amp;start=3"
-        }
+        className="w-full aspect-video absolute"
+        style={{ transform: "scale(1.35)" }}
+        src={"https://www.youtube-nocookie.com/embed/"+movieTrailer?.key+"?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&vq=4k2160"}
         title="YouTube video player"
-        // frameborder="0"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        // allowfullscreen
+        
+        allow=" autoplay;"
+        
       ></iframe>
     </div>
   );
