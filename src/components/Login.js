@@ -136,7 +136,7 @@ const Login = () => {
             />
             <p className="mb-10 text-orange-500">{errorMessage}</p>
             <button
-              className="p-3 mb-4 text-white font-bold bg-red-600 rounded-md"
+              className="p-3 mb-4 text-white font-bold bg-red-600 rounded-md hover:bg-red-700"
               onClick={handleSubmitBtn}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {

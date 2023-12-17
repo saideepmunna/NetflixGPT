@@ -4,8 +4,6 @@ const SecondaryContainer = () => {
   return (
     <div>
     <div>MoviesContainer</div>
-  
-   
     
     </div>
   )

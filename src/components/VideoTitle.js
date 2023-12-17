@@ -12,12 +12,14 @@ const VideoTitle = ({ title, overview }) => {
   const limitedOverview = words.slice(0, 36).join(" ");
   // console.log(limitedOverview.join(" "))
   return (
-    <div className="absolute z-20 text-white bg-gradient-to-r from-black w-full aspect-video">
-      <h1 className="pt-52 px-12 w-1/2 font-bold text-4xl text-white">{title}</h1>
+    <div className="absolute z-10 text-white w-full aspect-video"
+       style={{background: "linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0))"}}
+    >
+      <h1 className="pt-56 px-12 w-1/2 font-bold text-4xl text-white">{title}</h1>
       {words.length>50?
         <p className="px-12 text-base w-5/12 py-6 font-medium ">
           {limitedOverview} ... <span className="font-light text-sm cursor-pointer">see more</span>
-        </p>:<p className="px-12 text-base w-5/12 py-6 font-medium ">
+        </p>:<p className="px-12 text-base w-5/12 py-6 font-normal ">
           {overview}
         </p>
       }
@@ -30,7 +32,7 @@ const VideoTitle = ({ title, overview }) => {
             <div className="font-bold text-base">Play</div>
           </div>
         </div>
-        <div className=" w-36 bg-zinc-600 opacity-90 rounded-md flex items-center justify-center px-4 cursor-pointer">
+        <div className=" w-40 bg-zinc-600 bg-opacity-70 rounded-md flex items-center justify-center px-6 py-2 cursor-pointer">
           <div className="mr-2">
             <FontAwesomeIcon
               icon={faCircleInfo}

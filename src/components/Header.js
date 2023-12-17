@@ -67,7 +67,7 @@ const Header = () => {
         </div>
       )}
       {user && (
-        <div className={pageScrolled? "px-10 py-[7px] bg-black w-full flex justify-between fixed z-40":"px-10 py-[7px] bg-gradient-to-b from-black w-full flex justify-between fixed z-40"}>
+        <div className={pageScrolled? "px-10 py-[7px] bg-black w-full flex justify-between fixed z-20":"px-10 py-[7px] bg-gradient-to-b from-black w-full flex justify-between fixed z-20"}>
           <div className="flex items-center">
             <img
               className="w-32"
