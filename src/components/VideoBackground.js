@@ -11,7 +11,7 @@ const VideoBackground = ({ movieId }) => {
       <iframe
         className="w-full aspect-video scale-[1.32]"
         // style={{ transform: "scale(1.35)" }}
-        src={"https://www.youtube-nocookie.com/embed/"+movieTrailer?.key+"?verison=3&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist="+movieTrailer?.key}
+        src={"https://www.youtube-nocookie.com/embed/"+movieTrailer?.key+"?&autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist="+movieTrailer?.key}
         title="YouTube video player"
         allow=" autoplay;"
       ></iframe>

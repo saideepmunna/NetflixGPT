@@ -15,7 +15,7 @@ const VideoTitle = ({ title, overview }) => {
     <div className="absolute z-10 text-white w-full aspect-video"
        style={{background: "linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0))"}}
     >
-      <h1 className="pt-56 px-12 w-1/2 font-bold text-4xl text-white">{title}</h1>
+      <h1 className="pt-60 px-12 w-1/2 font-bold text-4xl text-white">{title}</h1>
       {words.length>50?
         <p className="px-12 text-base w-5/12 py-6 font-medium ">
           {limitedOverview} ... <span className="font-light text-sm cursor-pointer">see more</span>

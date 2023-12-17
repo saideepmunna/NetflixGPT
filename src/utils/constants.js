@@ -9,3 +9,4 @@ export const MOVIE_FETCH_OPTIONS = {
   };
 
 export const MOVIE_PHOTO_URL = "http://image.tmdb.org/t/p/w500";
+
