@@ -2,7 +2,7 @@
 const FooterLinks = () => {
   return (
     <div className="text-zinc-500">
-         <div className="grid grid-cols-4 gap-4 text-sm pb-7">
+         <div className="grid grid-cols-4 gap-4 text-sm pt-2 pb-7">
           <p className="hover:underline cursor-pointer">Audio Description</p>
           <p className="hover:underline cursor-pointer">Help Centre</p>
           <p className="hover:underline cursor-pointer">Gift Cards</p>
