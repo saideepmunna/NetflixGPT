@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,7 +67,7 @@ const Header = () => {
         </div>
       )}
       {user && (
-        <div className={pageScrolled? "px-10 py-[7px] bg-black w-full flex justify-between fixed z-20":"px-10 py-[7px] bg-gradient-to-b from-black w-full flex justify-between fixed z-20"}>
+        <div className={pageScrolled? "px-10 py-[7px] bg-black w-full flex justify-between fixed z-30":"px-10 py-[7px] bg-gradient-to-b from-black w-full flex justify-between fixed z-30"}>
           <div className="flex items-center">
             <img
               className="w-32"
@@ -75,12 +75,12 @@ const Header = () => {
               alt="netflix-logo"
             />
             <div className="flex text-white text-sm list-none py-3 ml-4">
-              <li className="ml-4 font-bold">Home</li>
-              <li className="ml-4">TV Shows</li>
-              <li className="ml-4">Movies</li>
-              <li className="ml-4">New & Popular</li>
-              <li className="ml-4">My List</li>
-              <li className="ml-4">Browse by Languages</li>
+              <Link to={"/"}><li className="ml-4 font-bold">Home</li></Link>
+              <li className="ml-4 cursor-pointer hover:text-gray-300">TV Shows</li>
+              <li className="ml-4 cursor-pointer hover:text-gray-300">Movies</li>
+              <li className="ml-4 cursor-pointer hover:text-gray-300">New & Popular</li>
+              <li className="ml-4 cursor-pointer hover:text-gray-300">My List</li>
+              <li className="ml-4 cursor-pointer hover:text-gray-300">Browse by Languages</li>
             </div>
           </div>
           <div className="flex justify-end items-center">

@@ -9,9 +9,9 @@ const MainContainer = () => {
   // console.log(movies)
   if(!movies) return; //EARLY RETURN
 
-  const mainMovie = movies[2];
+  const mainMovie = movies[4];
 
-  console.log(mainMovie)
+  // console.log(mainMovie)
   
 
  
