@@ -12,8 +12,8 @@ const PopularMovies = ({ popularMovies }) => {
         onMouseOver={iconHandlerOver}
         onMouseOut={iconHandlerOut}
       >
-        <h1 className="text-white font-semibold text-lg ">Popular Movies</h1>
-        <div className="flex overflow-x-auto no-scrollbar pt-3">
+        <h1 className="text-white font-semibold text-lg">Popular Movies</h1>
+        <div className="flex overflow-x-auto no-scrollbar pt-3 cursor-pointer">
           <div className="flex flex-row-reverse gap-2">
             {popularMovies.map((movie) => (
               <MovieCard key={movie?.id} imageId={movie?.poster_path} />

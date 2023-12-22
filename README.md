@@ -2,7 +2,7 @@
 - Installed TailwindCSS
 - Created Header, Login, Body Components
 - Installed and Imported react-router-dom, implemented routing
-- Cleaned all the code in App.js and added only <Body/> component
+- Cleaned all the code in App.js and added only Body component
 - Applied routing in Body component 
 - Developed Login page with toggleSignIn/SignUp forms and Header page
 - Form Validation
@@ -12,16 +12,25 @@
 - Create user account through signup form
 - Implemented authentication using firebase APIs
 - Setup Redux Store with userSlice
-- Implemented Signout
-- Used updateProfile firebase API
-- Updated name on browse using selector
-- BUG FIX - Now we can't route directly from browse page to login page and vice verca
+- Implemented Signout.
+- Used updateProfile firebase API.
+- Updated name on browse using selector.
+- BUG FIX - Now we can't route directly from browse page to login page and vice verca.
 - Bug fixed through onAuthStateChanged which resricts the routes by navigating only on auth state changes.
-- Unsubscribed the onAuthStateChanged callback in useEffect when component unmounts
+- Unsubscribed the onAuthStateChanged callback in useEffect when component unmounts.
 - Replaced the strings in app with constant values so that it will be easy to update when a photo url updates.
-- fetched the movie list using TMDB API and giving access token in options
+- fetched the movie list using TMDB API and giving access token in options.
 - Created a movies Slice and dispatched an action of movies list to the slice.
 - Created a custom hook for Fetching data and dispatching task in the Browse component.
+- Created Main, secondary components in Browse page and added Video and VideoTitle to the MainContainer.
+- Designed VideoTitle components with Play and More Info buttons.
+- Embedded YT video in VideoBackground.
+- Fetched Movie trailer through custom hook and stored in redux store.
+- Made Header fixed and added eventListener onScroll to change bg of the header.
+- Created the movies list on the browse page with NowPlaying, Popular, Trending components using movies API
+- Added the Footer page with social icons, links etc
+- Added scrollable icons and made it visible only on hover. Achieved this by useState and custom hook(useDirection) 
+
 
 FEATURES
 

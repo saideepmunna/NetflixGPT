@@ -4,12 +4,12 @@ import VideoTitle from './VideoTitle'
 import { useSelector } from 'react-redux'
 
 const MainContainer = () => {
-  const movies = useSelector((store)=>store.movies?.nowPlayingMovies);
+  const movies = useSelector((store)=>store.movies?.upcomingMovies);
   
   // console.log(movies)
   if(!movies) return; //EARLY RETURN
 
-  const mainMovie = movies[4];
+  const mainMovie = movies[7];
 
   // console.log(mainMovie)
   

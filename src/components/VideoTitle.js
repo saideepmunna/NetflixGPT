@@ -32,7 +32,7 @@ const VideoTitle = ({ title, overview }) => {
             <div className="font-bold text-base">Play</div>
           </div>
         </div>
-        <div className=" w-40 bg-zinc-600 bg-opacity-70 rounded-md flex items-center justify-center px-6 py-2 cursor-pointer">
+        <div className=" w-40 bg-white bg-opacity-25 rounded-md flex items-center justify-center px-6 py-2 cursor-pointer">
           <div className="mr-2">
             <FontAwesomeIcon
               icon={faCircleInfo}

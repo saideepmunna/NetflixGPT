@@ -14,8 +14,8 @@ const NowPlayingMovies = ({ nowPlayingMovies }) => {
         onMouseOver={iconHandlerOver}
         onMouseOut={iconHandlerOut}
       >
-        <h1 className="text-white font-semibold text-lg ">Now Playing</h1>
-        <div className="flex overflow-x-auto no-scrollbar pt-3">
+        <h1 className="text-white font-semibold text-lg">Now Playing</h1>
+        <div className="flex overflow-x-auto no-scrollbar pt-3 cursor-pointer">
           <div className="flex gap-2">
             {nowPlayingMovies.map((movie) => (
               <MovieCard key={movie?.id} imageId={movie?.poster_path} />

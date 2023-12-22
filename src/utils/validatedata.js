@@ -5,4 +5,6 @@ export const validateData = (email, password)=>{
     if(!validEmail) return "please enter a valid email address";
     if(!validPassword) return "Please enter a valid password";
     return null;
-}
+} 
+
+

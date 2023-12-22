@@ -3,14 +3,17 @@ import MovieCard from "./MovieCard";
 import useDirectionIcon from "./useDirectionIcon";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const UpcomingMovies = ({upComingMovies}) => {
+const UpcomingMovies = ({ upComingMovies }) => {
   const { directionIcon, iconHandlerOver, iconHandlerOut } = useDirectionIcon();
   return (
     <div>
-        <div className="pl-12 mt-7 relative z-20" onMouseOver={iconHandlerOver}
-        onMouseOut={iconHandlerOut}>
+      <div
+        className="pl-12 mt-7 relative z-20"
+        onMouseOver={iconHandlerOver}
+        onMouseOut={iconHandlerOut}
+      >
         <h1 className="text-white font-semibold text-lg ">Upcoming Movies</h1>
-        <div className="flex overflow-x-auto no-scrollbar pt-3">
+        <div className="flex overflow-x-auto no-scrollbar pt-3 cursor-pointer">
           <div className="flex gap-2">
             {upComingMovies.map((movie) => (
               <MovieCard key={movie?.id} imageId={movie?.poster_path} />
@@ -29,7 +32,7 @@ const UpcomingMovies = ({upComingMovies}) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default UpcomingMovies;

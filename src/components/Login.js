@@ -6,14 +6,19 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import Header from "./Header";
+import Footer from "./Footer";
+import lang from "../utils/languageConstant";
 
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const langIdentifier = useSelector(store=>store.config.selectedLang);
+
+  
 
   const dispatch = useDispatch();
   const name = useRef(null);
@@ -89,30 +94,27 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   return (
-    <div>
+    <div className="relative bg-black">
       <Header />
-      <img
-        className="absolute brightness-[0.45]"
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/c906271d-7184-4eec-83c9-b6d4c1a068ec/728874a6-eeda-400a-9bcf-a935a1408a4f/IN-en-20231127-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-        alt="bg-img"
-      />
-      <div className="flex justify-center">
-        <form
+  
+      <div className="relative z-20 flex justify-center">
+      <div className="flex justify-center bg-black px-16 py-8 bg-opacity-70">
+      <form
           onSubmit={(e) => {
             e.preventDefault();
           }}
-          className="absolute z-20 mt-24 text-white"
+          className=" text-white"
         >
-          <div className="flex flex-col bg-black px-[68px] pt-[60px] pb-[40px] rounded-md bg-opacity-[0.85]">
+          <div className="flex flex-col justify-center w-72 rounded-md">
             <p className="text-white font-semibold text-3xl mb-6">
-              {isSignInForm ? "Sign In" : "Sign Up"}
+              {isSignInForm ? lang[langIdentifier].signInTxt : lang[langIdentifier].signUpText}
             </p>
             {!isSignInForm && (
               <input
                 ref={name}
                 type="text"
-                placeholder="Name"
-                className="p-3 w-[296px] mb-6 bg-gray-700 rounded-md"
+                placeholder={lang[langIdentifier].namePlaceHolder}
+                className="p-3 mb-6 bg-gray-700 rounded-md"
               />
             )}
             {/* {!isSignInForm && (
@@ -125,13 +127,13 @@ const Login = () => {
             )} */}
             <input
               ref={email}
-              placeholder="Email"
-              className="p-3 w-72 mb-6 bg-gray-700 rounded-md"
+              placeholder={lang[langIdentifier].emailPlaceholder}
+              className="p-3 mb-6 bg-gray-700 rounded-md"
             />
             <input
               ref={password}
               type="password"
-              placeholder="Password"
+              placeholder={lang[langIdentifier].passwordPlaceHolder}
               className="p-3 mb-3 bg-gray-700 rounded-md"
             />
             <p className="mb-10 text-orange-500">{errorMessage}</p>
@@ -145,20 +147,25 @@ const Login = () => {
                 }
               }}
             >
-              {isSignInForm ? "Sign In" : "Sign Up"}
+              {isSignInForm ? lang[langIdentifier].signInTxt : lang[langIdentifier].signUpText}
             </button>
             <p
               className="text-white text-sm cursor-pointer hover:underline mb-20"
               onClick={toggleSignin}
             >
               {isSignInForm
-                ? "New to Netflix? Sign up now"
-                : "Already a user? Sign In"}
+                ? lang[langIdentifier].signUpLink
+                : lang[langIdentifier].signInLink}
             </p>
           </div>
         </form>
       </div>
-    </div>
+      </div>
+      <Footer/>
+      </div>
+      
+      
+    
   );
 };
 
