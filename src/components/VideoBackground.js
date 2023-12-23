@@ -5,6 +5,7 @@ const VideoBackground = ({ movieId }) => {
   useTrailerHook(movieId);
   const movieTrailer = useSelector((store) => store.movies?.trailerVideo);
 
+  console.log(movieTrailer?.key)
   return (
     <div>
       <div className="overflow-hidden">
