@@ -14,3 +14,5 @@ export const MOVIE_FETCH_OPTIONS = {
 export const MOVIE_PHOTO_URL = "http://image.tmdb.org/t/p/w500";
 
 export const selectLanguage = [{ languageIdentifier: "en", languagename: "English" }, {languageIdentifier:"hindi", languagename:"हिंदी"}];
+
+export const OPEN_AI_KEY = "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"
