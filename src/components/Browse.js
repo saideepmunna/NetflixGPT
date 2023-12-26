@@ -18,15 +18,8 @@ const Browse = () => {
   return (
     <div className="bg-black">
       <Header />
-
-      {gptState.gptSearchState ? (
-        <GPTSearch />
-      ) : (
-        <>
-          <MainContainer />
-          <SecondaryContainer />
-        </>
-      )}
+      <MainContainer />
+      <SecondaryContainer />
       <Footer />
     </div>
   );

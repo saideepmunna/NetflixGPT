@@ -24,7 +24,7 @@ const SecondaryContainer = () => {
        * Horror & Thrillers
          -Movie cards*n
        */}
-    <div className='pb-12'>
+    <div>
      
       {nowPlaying&&<NowPlayingMovies nowPlayingMovies={nowPlaying}/>}
       {topRated&&<TopRatedMovies topRatedMovies={topRated}/>}

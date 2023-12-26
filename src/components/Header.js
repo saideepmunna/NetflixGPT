@@ -59,6 +59,7 @@ const Header = () => {
   }, []);
 
   const handleGptSearch = () => {
+    gptHeader ? navigate("/browse") : navigate("/recommendations");
     dispatch(toggleGptSearch());
   };
 
@@ -77,7 +78,7 @@ const Header = () => {
             />
           </div>
           <div>
-            <div className="w-full relative z-20 bg-gradient-to-b from-black flex justify-between items-center">
+            <div className="w-full relative z-50 bg-gradient-to-b from-black flex justify-between items-center">
               <img className="w-52 ml-4" src={LOGO} alt="netflix-logo" />
               <div className="px-8">
                 <select
@@ -109,7 +110,7 @@ const Header = () => {
           <div className="flex items-center">
             <img className="w-32" src={LOGO} alt="netflix-logo" />
             <div className="flex text-white text-sm list-none py-3 ml-4">
-              <Link to={"/"}>
+              <Link to={"/browse"}>
                 <li className="ml-4 font-bold">Home</li>
               </Link>
               <li className="ml-4 cursor-pointer hover:text-gray-300">

@@ -9,7 +9,7 @@ const MainContainer = () => {
   // console.log(movies)
   if(!movies) return; //EARLY RETURN
 
-  const mainMovie = movies[8];
+  const mainMovie = movies[4];
 
   // console.log(mainMovie)
   

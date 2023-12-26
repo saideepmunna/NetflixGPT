@@ -11,11 +11,14 @@ import { addUser } from "../utils/userSlice";
 import Header from "./Header";
 import Footer from "./Footer";
 import lang from "../utils/languageConstant";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const langIdentifier = useSelector(store=>store.config.selectedLang);
 
   
@@ -90,12 +93,15 @@ const Login = () => {
     }
   };
 
+  const handleShowPassword = () =>{
+    setShowPassword(!showPassword);
+  }
+
   const toggleSignin = () => {
     setIsSignInForm(!isSignInForm);
   };
   return (
     <div className="relative bg-black">
-      <Header />
   
       <div className="relative z-20 flex justify-center">
       <div className="flex justify-center bg-black px-16 py-8 bg-opacity-70">
@@ -130,12 +136,25 @@ const Login = () => {
               placeholder={lang[langIdentifier].emailPlaceholder}
               className="p-3 mb-6 bg-gray-700 rounded-md"
             />
+            <div className="flex relative">
             <input
               ref={password}
-              type="password"
+              type={showPassword? "text": "password"}
               placeholder={lang[langIdentifier].passwordPlaceHolder}
-              className="p-3 mb-3 bg-gray-700 rounded-md"
+              className="p-3 mb-3 bg-gray-700 rounded-md w-full"
+              
             />
+            <div className="cursor-pointer">
+            <FontAwesomeIcon icon={showPassword? faEyeSlash : faEye} className="absolute right-4 top-4 text-gray-700" onClick={handleShowPassword}/>
+
+            </div>
+            </div>
+            
+             
+
+            
+          
+            
             <p className="mb-10 text-orange-500">{errorMessage}</p>
             <button
               className="p-3 mb-4 text-white font-bold bg-red-600 rounded-md hover:bg-red-700"
