@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import useDirectionIcon from "./useDirectionIcon";
 
-const NowPlayingMovies = ({ nowPlayingMovies }) => {
+const NowPlayingMovies = ({ title, nowPlayingMovies }) => {
   // console.log(nowPlayingMovies);
 
   const { directionIcon, iconHandlerOver, iconHandlerOut } = useDirectionIcon();
@@ -14,7 +14,7 @@ const NowPlayingMovies = ({ nowPlayingMovies }) => {
         onMouseOver={iconHandlerOver}
         onMouseOut={iconHandlerOut}
       >
-        <h1 className="text-white font-semibold text-lg">Now Playing</h1>
+        <h1 className="text-white font-semibold text-lg">{title}</h1>
         <div className="flex overflow-x-auto no-scrollbar pt-3 cursor-pointer">
           <div className="flex gap-2">
             {nowPlayingMovies.map((movie) => (

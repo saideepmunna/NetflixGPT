@@ -1,9 +1,7 @@
 import React from 'react'
 import NowPlayingMovies from './NowPlayingMovies';
 import { useSelector } from 'react-redux';
-import TopRatedMovies from './TopRatedMovies';
-import PopularMovies from './PopularMovies';
-import UpcomingMovies from './UpcomingMovies';
+import MovieListSlider from './MovieListSlider';
 
 const SecondaryContainer = () => {
 
@@ -26,10 +24,10 @@ const SecondaryContainer = () => {
        */}
     <div>
      
-      {nowPlaying&&<NowPlayingMovies nowPlayingMovies={nowPlaying}/>}
-      {topRated&&<TopRatedMovies topRatedMovies={topRated}/>}
-      {popularMovies&&<PopularMovies popularMovies={popularMovies}/>}
-      {upComingMovies&&<UpcomingMovies upComingMovies={upComingMovies}/>}
+      {nowPlaying&&<NowPlayingMovies title={"Now Playing"} nowPlayingMovies={nowPlaying}/>}
+      {topRated&&<MovieListSlider title={"Top Rated Movies"} moviesList={topRated}/>}
+      {popularMovies&&<MovieListSlider title={"Popular Movies"} moviesList={popularMovies}/>}
+      {upComingMovies&&<MovieListSlider title={"Upcoming movies"} moviesList={upComingMovies}/>}
 
 
     </div>

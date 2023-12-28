@@ -133,7 +133,7 @@ const Header = () => {
           <div className="flex justify-end items-center">
             <div>
               <button
-                className="text-white text-sm font-medium bg-red-700 px-4 py-1 rounded-md mr-2"
+                className="text-white text-sm font-medium bg-red-700 px-4 py-1 rounded-md mr-2 hover:bg-red-500"
                 onClick={handleGptSearch}
               >
                 {gptHeader ? "Home" : "Recommendations"}

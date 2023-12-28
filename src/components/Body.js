@@ -2,13 +2,11 @@ import React from "react";
 import Login from "./Login";
 import Browse from "./Browse";
 import {
-  Route,
   RouterProvider,
-  Routes,
   createBrowserRouter,
 } from "react-router-dom";
-import GPTSearch from "./GPTSearch";
 import Header from "./Header";
+import NetflixGPT from "./NetflixGPT";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -35,7 +33,7 @@ const Body = () => {
       element: (
         <>
           <Header />
-          <GPTSearch />
+          <NetflixGPT />
         </>
       ),
     },
