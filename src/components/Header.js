@@ -70,10 +70,10 @@ const Header = () => {
     <div>
       {!user && (
         <div>
-          <div className="absolute z-10">
+          <div className="absolute z-10 overflow-hidden">
             <img
-              className="brightness-[0.45]"
-              src="https://assets.nflxext.com/ffe/siteui/vlv3/c906271d-7184-4eec-83c9-b6d4c1a068ec/728874a6-eeda-400a-9bcf-a935a1408a4f/IN-en-20231127-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+              className="brightness-[0.45] w-fulll scale-110"
+              src="https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/15feb590-3d73-45e9-9e4a-2eb334c83921/IN-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg"
               alt="bg-img"
             />
           </div>
