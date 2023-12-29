@@ -8,7 +8,6 @@ import { auth } from "../utils/firebase";
 import { updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import Header from "./Header";
 import Footer from "./Footer";
 import lang from "../utils/languageConstant";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

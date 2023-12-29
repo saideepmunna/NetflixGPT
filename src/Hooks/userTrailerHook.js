@@ -7,6 +7,7 @@ import { useEffect } from "react";
 const useTrailerHook = (movieId)=>{
     // const [trailerId, setTrailerId] = useState(null)
   const dispatch = useDispatch();
+  const movieTrailer = useSelector(store=>store.movies.movieTrailer);
 
   const getMovieTrailer = async () => {
     const data = await fetch(
@@ -28,8 +29,8 @@ const useTrailerHook = (movieId)=>{
     // But its better to use redux store to dispatch an action and get the data from the store and use in JSX.
   };
 
-  useEffect(() => {
-    getMovieTrailer();
+  useEffect(() => { 
+    !movieTrailer && getMovieTrailer();  //MEMOIZATION TECHNIQUE
   }, []);
 }
 

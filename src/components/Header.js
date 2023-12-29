@@ -111,7 +111,9 @@ const Header = () => {
             <img className="w-32" src={LOGO} alt="netflix-logo" />
             <div className="flex text-white text-sm list-none py-3 ml-4">
               <Link to={"/browse"}>
-                <li className="ml-4 font-bold">Home</li>
+                <li className="ml-4 font-bold">
+                  Home
+                </li>
               </Link>
               <li className="ml-4 cursor-pointer hover:text-gray-300">
                 TV Shows
