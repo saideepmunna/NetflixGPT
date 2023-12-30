@@ -48,7 +48,7 @@ const GPTSearch = () => {
   return (
     <div>
       <div className="bg-black w-full h-screen">
-        <div className="pl-10 pt-20 pb-7">
+        <div className="px-2 md:pl-10 pt-20 pb-7">
           <h1 className="text-white p-2 mb-4 font-semibold text-2xl">Confused about what to watch? Try our new AI search</h1>
           <form
             onSubmit={(e) => {
@@ -59,7 +59,7 @@ const GPTSearch = () => {
               ref={gptInput}
               type="text"
               placeholder="Suggest me some funny bollywood movies.."
-              className="w-4/12 p-2 mx-2 rounded-sm"
+              className="w-7/12 md:w-4/12  p-2 mx-2 rounded-sm"
             />
             <button
               className="text-white bg-red-600 px-3 py-2 rounded-sm"

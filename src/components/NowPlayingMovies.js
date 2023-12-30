@@ -9,7 +9,7 @@ const NowPlayingMovies = ({ title, nowPlayingMovies }) => {
   return (
     <div>
       <div
-        className="pl-3 md:pl-12 -mt-8 md:-mt-40 relative z-20"
+        className="pl-3 md:pl-12 mt-3 md:-mt-40 relative z-20"
         onMouseOver={iconHandlerOver}
         onMouseOut={iconHandlerOut}
       >
