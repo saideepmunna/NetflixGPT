@@ -4,7 +4,7 @@ const MovieCard = ({ imageId }) => {
   // console.log(imageId);
   if(!imageId) return null;
   return (
-    <div className="w-36">
+    <div className="w-24 md:w-36">
       <img className="rounded-md" src={MOVIE_PHOTO_URL + imageId} alt="MovieImage" />
     </div>
   );

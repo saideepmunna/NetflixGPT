@@ -105,7 +105,7 @@ const Login = () => {
             }}
             className=" text-white"
           >
-            <div className="flex flex-col justify-center w-72 rounded-md">
+            <div className="flex flex-col justify-center w-80 rounded-md">
               <p className="text-white font-semibold text-3xl mb-6">
                 {isSignInForm
                   ? lang[langIdentifier].signInTxt

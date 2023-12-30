@@ -72,17 +72,17 @@ const Header = () => {
         <div>
           <div className="absolute z-10 overflow-hidden">
             <img
-              className="brightness-[0.45] w-fulll scale-110"
+              className="brightness-[0.50] h-screen md:h-full scale-110"
               src="https://assets.nflxext.com/ffe/siteui/vlv3/c31c3123-3df7-4359-8b8c-475bd2d9925d/15feb590-3d73-45e9-9e4a-2eb334c83921/IN-en-20231225-popsignuptwoweeks-perspective_alpha_website_large.jpg"
               alt="bg-img"
             />
           </div>
           <div>
             <div className="w-full relative z-50 bg-gradient-to-b from-black flex justify-between items-center">
-              <img className="w-52 ml-4" src={LOGO} alt="netflix-logo" />
+              <img className="w-36 ml-2 md:w-52 md:ml-4" src={LOGO} alt="netflix-logo" />
               <div className="px-8">
                 <select
-                  className="px-3 py-1 -mt-6 bg-black text-white font-medium rounded-sm border border-solid border-white"
+                  className="px-1 md:px-3 py-1 -mt-6 bg-black text-white font-medium rounded-sm border border-solid border-white"
                   onChange={handleLangChange}
                 >
                   {selectLanguage.map((lang) => (
@@ -103,13 +103,13 @@ const Header = () => {
         <div
           className={
             pageScrolled
-              ? "px-10 py-[7px] bg-black w-full flex justify-between fixed z-30"
-              : "px-10 py-[7px] bg-gradient-to-b from-black w-full flex justify-between fixed z-30"
+              ? "px-3 md:px-10 py-[7px] bg-black w-full flex justify-between fixed z-30"
+              : "px-3 md:px-10 py-[7px] bg-gradient-to-b from-black w-full flex justify-between fixed z-30"
           }
         >
           <div className="flex items-center">
-            <img className="w-32" src={LOGO} alt="netflix-logo" />
-            <div className="flex text-white text-sm list-none py-3 ml-4">
+            <Link to={"/browse"}><img className="w-24 md:w-32" src={LOGO} alt="netflix-logo" /></Link>
+            <div className="text-white text-sm list-none py-3 ml-4 hidden md:flex">
               <Link to={"/browse"}>
                 <li className="ml-4 font-bold">
                   Home
@@ -135,17 +135,17 @@ const Header = () => {
           <div className="flex justify-end items-center">
             <div>
               <button
-                className="text-white text-sm font-medium bg-red-700 px-4 py-1 rounded-md mr-2 hover:bg-red-500"
+                className="text-white text-xs md:text-sm font-medium bg-red-700 px-1 md:px-4 py-1 rounded-md mr-2 hover:bg-red-500"
                 onClick={handleGptSearch}
               >
                 {gptHeader ? "Home" : "Recommendations"}
               </button>
             </div>
-            <div className="mr-2">
+            <div className="mr-2 hidden md:block">
               <img className="rounded-md" src={PROFILE_IMG} alt="user icon" />
             </div>
             <div onClick={handlerSignOut} className="flex cursor-pointer">
-              <button className="text-white">Signout</button>
+              <button className="text-white text-sm md:text-base">Signout</button>
               {user?.displayName && (
                 <p className="text-blue-200 m-1">({user?.displayName})</p>
               )}

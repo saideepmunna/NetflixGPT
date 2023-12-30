@@ -1,18 +1,17 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MovieCard from "./MovieCard";
 import useDirectionIcon from "./useDirectionIcon";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import DirectionIcon from "./DirectionIcon";
 
 const MovieListSlider = ({ title, moviesList }) => {
   const { directionIcon, iconHandlerOver, iconHandlerOut } = useDirectionIcon();
   return (
     <div>
       <div
-        className="pl-12 mt-7 relative z-20"
+        className="pl-4 md:pl-12 mt-7 relative z-20"
         onMouseOver={iconHandlerOver}
         onMouseOut={iconHandlerOut}
       >
-        <h1 className="text-white font-semibold text-lg">{title}</h1>
+        <h1 className="text-white font-semibold text-sm md:text-lg">{title}</h1>
         <div className="flex overflow-x-auto no-scrollbar pt-3 cursor-pointer">
           <div className="flex gap-2">
             {moviesList.map((movie) => (
@@ -20,16 +19,7 @@ const MovieListSlider = ({ title, moviesList }) => {
             ))}
           </div>
         </div>
-        {directionIcon && (
-          <div>
-            <div className="absolute z-30 right-0 bg-black bg-opacity-50 top-[117px] text-5xl">
-              <FontAwesomeIcon icon={faAngleRight} className="text-white" />
-            </div>
-            <div className="absolute z-30 left-2 bg-black bg-opacity-40 top-[117px] text-5xl">
-              <FontAwesomeIcon icon={faAngleLeft} className="text-white" />
-            </div>
-          </div>
-        )}
+        {directionIcon && <DirectionIcon />}
       </div>
     </div>
   );
