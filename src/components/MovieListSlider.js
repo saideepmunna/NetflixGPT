@@ -1,5 +1,5 @@
 import MovieCard from "./MovieCard";
-import useDirectionIcon from "./useDirectionIcon";
+import useDirectionIcon from "../Hooks/useDirectionIcon";
 import DirectionIcon from "./DirectionIcon";
 
 const MovieListSlider = ({ title, moviesList }) => {
